@@ -23,12 +23,11 @@ class Nine1bot < Formula
   end
 
   def install
-    # Homebrew 解压后会自动进入顶层目录，所以直接引用文件即可
     bin.install "nine1bot"
-    prefix.install "bin" => "libexec/bin"
-    prefix.install "skills"
-    prefix.install "web"
-    prefix.install "scripts"
+    libexec.install "bin"
+    libexec.install "skills"
+    libexec.install "web"
+    libexec.install "scripts"
   end
 
   def caveats
