@@ -23,22 +23,12 @@ class Nine1bot < Formula
   end
 
   def install
-    # 根据平台确定目录名
-    if OS.mac? && Hardware::CPU.arm?
-      dir = "nine1bot-darwin-arm64"
-    elsif OS.linux? && Hardware::CPU.arm?
-      dir = "nine1bot-linux-arm64"
-    elsif OS.linux? && Hardware::CPU.intel?
-      dir = "nine1bot-linux-x64"
-    else
-      dir = "nine1bot-darwin-arm64"
-    end
-
-    bin.install "#{dir}/nine1bot" => "nine1bot"
-    prefix.install "#{dir}/bin" => "libexec/bin"
-    prefix.install "#{dir}/skills" => "skills"
-    prefix.install "#{dir}/web" => "web"
-    prefix.install "#{dir}/scripts" => "scripts"
+    # Homebrew 解压后会自动进入顶层目录，所以直接引用文件即可
+    bin.install "nine1bot"
+    prefix.install "bin" => "libexec/bin"
+    prefix.install "skills"
+    prefix.install "web"
+    prefix.install "scripts"
   end
 
   def caveats
